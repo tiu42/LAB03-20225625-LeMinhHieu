@@ -1,3 +1,5 @@
+package hust.soict.dsai.lab01;
+
 public class MatrixAddition {
     public static void main(String[] args) {
         int[][] matrix1 = {

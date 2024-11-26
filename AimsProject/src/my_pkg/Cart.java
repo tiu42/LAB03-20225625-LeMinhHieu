@@ -126,4 +126,24 @@ public class Cart {
     	System.out.println("Total cost: " + totalCost());
     	System.out.println("***************************************************");
     }
+    
+    public void searchDVD(int id) {
+    	for(int i=0; i<this.qtyOrdered;i++) {
+			if(orderedItems[i].getId() == id) {
+                System.out.println("Found disc: " + id + ". " + orderedItems[i].toString());
+                return;
+			}
+		}
+		System.out.println("Disc not found!");
+    }
+    
+    public void searchDVD(String title) {
+    	for(int i=0; i<this.qtyOrdered;i++) {
+			if(orderedItems[i].isMatch(title)) {
+                System.out.println("Found disc: " + orderedItems[i].getId() + ". " + orderedItems[i].toString());
+                return;
+			}
+		}
+		System.out.println("Disc not found!");
+    }
 }

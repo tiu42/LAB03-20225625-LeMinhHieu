@@ -26,11 +26,18 @@ public class DigitalVideoDisc {
 	public float getCost() {
 		return cost;
 	}
+	public int getId() {
+		return id;
+	}
 	public String toString() {
 		String s;
 		s = "DVD - " + title + " - " + category + " - " 
 				+ director + " - " + length + ": " + cost + "$";
 		return s;
+	}
+	public boolean isMatch(String t) {
+		if (this.title == t) return true;
+		return false;
 	}
 	public DigitalVideoDisc(String title) {
 		super();

@@ -1,0 +1,9 @@
+- Question: Is JAVA a Pass by Value or a Pass by Reference programming language?
+- Answer:
+Java là ngôn ngữ lập trình truyền bang giá trị.
+
+Trong Java, tất cả các tham số được truyền vào phương thức đều được truyền bằng giá trị. Điều này có nghĩa là:
+1. Nếu tham số là kiểu dữ liệu nguyên thủy (primitive), giá trị của biến được sao chép và truyền vào phương thức. Việc thay đổi giá trị trong phương thức không ảnh hưởng đến biến gốc.
+2. Nếu tham số là một đối tượng (object), giá trị của tham chiếu (reference) đến đối tượng được sao chép và truyền vào phương thức. Điều này khiến phương thức làm việc với cùng đối tượng, nhưng bản thân tham chiếu là một bản sao. Do đó, nếu thay đổi tham chiếu (gán tham chiếu đến đối tượng khác), nó không ảnh hưởng đến tham chiếu gốc bên ngoài phương thức.
+
+Tóm lại: Java chỉ truyền giá trị của biến hoặc tham chiếu, chứ không truyền trực tiếp biến hoặc tham chiếu gốc.

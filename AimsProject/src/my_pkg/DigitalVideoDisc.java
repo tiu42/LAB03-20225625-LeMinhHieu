@@ -26,6 +26,12 @@ public class DigitalVideoDisc {
 	public float getCost() {
 		return cost;
 	}
+	public String toString() {
+		String s;
+		s = "DVD - " + title + " - " + category + " - " 
+				+ director + " - " + length + ": " + cost + "$";
+		return s;
+	}
 	public DigitalVideoDisc(String title) {
 		super();
 		this.id = ++nbDigitalVideoDiscs;

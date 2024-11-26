@@ -18,6 +18,12 @@ public class CartTest {
         
         //Test the printCart method
         cart.printCart();
+        
+        //Test the search methods
+        cart.searchDVD(2);
+        cart.searchDVD(0);
+        cart.searchDVD("Aladin");
+        cart.searchDVD("Knives out");
 	}
 
 }

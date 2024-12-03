@@ -15,18 +15,18 @@ public class CartTest {
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 
         // Add DVDs to the cart
-        cart.addDVD(dvd1);
-        cart.addDVD(dvd2);
-        cart.addDVD(dvd3);
+        cart.addMedia(dvd1);
+        cart.addMedia(dvd2);
+        cart.addMedia(dvd3);
         
         //Test the printCart method
         cart.printCart();
         
         //Test the search methods
-        cart.searchDVD(2);
-        cart.searchDVD(0);
-        cart.searchDVD("Aladin");
-        cart.searchDVD("Knives out");
+        cart.searchById(2);
+        cart.searchById(0);
+        cart.searchByTitle("Aladin");
+        cart.searchByTitle("Knives out");
 	}
 
 }

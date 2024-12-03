@@ -41,5 +41,14 @@ public abstract class Media {
     }
 	public Media() {
 	}
+	
+	@Override
+	public String toString() {
+        return this.getClass().getSimpleName() +
+                " [id= " + id +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", cost= " + cost + " $]";
+    }
 
 }

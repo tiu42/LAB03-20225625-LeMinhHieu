@@ -1,6 +1,7 @@
 package hust.soict.dsai.aims.cart;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import hust.soict.dsai.aims.media.Media;
 
@@ -73,4 +74,24 @@ public class Cart {
         }
         System.out.println("No match found");
     }
+    
+    public void sortByTitleCost() {
+        Collections.sort(orderedItems,Media.COMPARE_BY_TITLE_COST);
+    }
+
+    public void sortByCostTitle() {
+        Collections.sort(orderedItems,Media.COMPARE_BY_COST_TITLE);
+    }
+    public Media findMedia(String title) {
+        for (Media item : orderedItems) {
+            if (item.getTitle().equals(title)) {
+                return item;
+            }
+        }
+        return null;
+    }
+    public void emptyCart() {
+    	orderedItems.removeAll(orderedItems);
+    }
+
 }

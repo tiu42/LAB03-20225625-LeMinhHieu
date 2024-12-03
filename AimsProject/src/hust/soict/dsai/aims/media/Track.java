@@ -25,5 +25,11 @@ public class Track implements Playable{
 		this.title = title;
 		this.length = length;
 	}
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null || getClass() != obj.getClass()) return false;
+	    Track track = (Track) obj;
+	    return title.equals(track.title) && length == track.length;
+	}
 	
 }

@@ -2,6 +2,7 @@ package hust.soict.dsai.aims.media;
 
 public abstract class Media {
 	
+	private static int nboMedia = 0;
 	private int id;
 	private String title;
 	private String category;
@@ -35,11 +36,14 @@ public abstract class Media {
         this.title = title;
         this.category = category;
         this.cost = cost;
+        this.id = ++nboMedia;
     }
 	public Media(String title) {
         this.title = title;
+        this.id = ++nboMedia;
     }
 	public Media() {
+		this.id = ++nboMedia;
 	}
 	
 	@Override

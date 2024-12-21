@@ -3,19 +3,32 @@ package hust.soict.dsai.aims.cart;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.naming.LimitExceededException;
+
+import hust.soict.dsai.aims.exception.DuplicatedItemException;
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
-	private ArrayList<Media> orderedItems = new ArrayList<Media>();
+	public static final int MAX_NUMBERS_ORDERED = 20;
+	private ObservableList<Media> orderedItems = FXCollections.observableArrayList();
 	
-	public void addMedia(Media media) {
-        if(orderedItems.contains(media)) {
-            System.out.println(media.getTitle() + " is already in the cart!");
-        } else {
-        	orderedItems.add(media);
-            System.out.println(media.getTitle() + " added!");
-        }
-    }
+	public ObservableList<Media> getOrderedItems() {
+		return orderedItems;
+	}
+
+	public void addMedia(Media media) throws LimitExceededException, DuplicatedItemException {
+		if (orderedItems.size() == MAX_NUMBERS_ORDERED) {
+			throw new LimitExceededException("ERROR: The number of media has reached its limit.");
+		}
+
+		if (orderedItems.contains(media)) {
+			throw new DuplicatedItemException("ERROR: Item already in cart.");
+		}
+		
+		orderedItems.add(media);
+	}
 	
 	public void removeMedia(Media media) {
         if(orderedItems.contains(media)) {
@@ -90,7 +103,15 @@ public class Cart {
         }
         return null;
     }
-    public void emptyCart() {
+    public Media fetchMedia(String title) {
+		for (Media m : orderedItems) {
+			if (m.isMatch(title))
+				return m;
+		}
+		return null;
+	}
+    
+    public void placeOrder() {
     	orderedItems.removeAll(orderedItems);
     }
 

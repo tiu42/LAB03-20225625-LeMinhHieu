@@ -38,4 +38,10 @@ public class Book extends Media {
         this.authors = authors;
     }
 
+
+
+	public Book(String title, String category, float cost) {
+		super(title, category, cost);
+	}
+
 }

@@ -1,11 +1,14 @@
 package hust.soict.dsai.test.cart;
 
+import javax.naming.LimitExceededException;
+
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.DuplicatedItemException;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class CartTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException, DuplicatedItemException {
 		// TODO Auto-generated method stub
 		Cart cart = new Cart();
 

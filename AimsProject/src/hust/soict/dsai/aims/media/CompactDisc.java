@@ -1,5 +1,6 @@
 package hust.soict.dsai.aims.media;
 
+import java.awt.Component;
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
@@ -62,6 +63,10 @@ public class CompactDisc extends Disc implements Playable {
 		super(title,category,cost);
 		this.artist = artist;
 		this.tracks = tracks;
+	}
+
+	public ArrayList<Track> getTracks() {
+		return tracks;
 	}
 
 }

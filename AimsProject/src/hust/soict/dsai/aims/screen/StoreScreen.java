@@ -38,23 +38,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 
 public class StoreScreen extends JFrame {
+
 	private Store store;
 	private JPanel center;
-	
+
 	public StoreScreen(Store store) {
 		this.store = store;
+
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
-		
+
 		cp.add(createNorth(), BorderLayout.NORTH);
 		cp.add(center = createCenter(store.getItemsInStore()), BorderLayout.CENTER);
-		
+
 		setVisible(true);
 		setTitle("Store");
 		setBounds(100, 0, 1024, 768);
 	}
-	
-	private JPanel createNorth() {
+
+	JPanel createNorth() {
 		JPanel north = new JPanel();
 		north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
 		north.add(createMenuBar());
@@ -62,8 +64,7 @@ public class StoreScreen extends JFrame {
 		return north;
 	}
 
-	private JMenuBar createMenuBar() {
-		
+	JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Options");
 
 		JMenu smUpdateStore = new JMenu("Update Store");
@@ -90,8 +91,7 @@ public class StoreScreen extends JFrame {
 		return menuBar;
 	}
 
-	private JPanel createHeader() {
-		
+	JPanel createHeader() {
 		JPanel header = new JPanel();
 		header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
 
@@ -114,34 +114,7 @@ public class StoreScreen extends JFrame {
 
 		return header;
 	}
-	
-	JPanel createCenter(List<Media> itemList) {
-		JPanel center = new JPanel();
 
-		int itemsToShow = itemList.size() < 9 ? itemList.size() : 9;
-
-		if (itemsToShow == 0) {
-			center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
-
-			JLabel lblStoreEmpty = new JLabel("No item found.");
-			lblStoreEmpty.setAlignmentX(CENTER_ALIGNMENT);
-			lblStoreEmpty.setFont(new Font(lblStoreEmpty.getName(), Font.PLAIN, 20));
-
-			center.add(Box.createRigidArea(new Dimension(10, 200)));
-			center.add(lblStoreEmpty);
-			return center;
-		}
-
-		center.setLayout(new GridLayout(0, 3, 2, 2));
-
-		for (int i = 0; i < itemsToShow; i++) {
-			MediaStore cell = new MediaStore(itemList.get(i), this);
-			center.add(cell);
-		}
-
-		return center;
-	}
-	
 	JPanel createSearchBar() {
 		JPanel searchBar = new JPanel();
 		searchBar.setLayout(new BoxLayout(searchBar, BoxLayout.X_AXIS));
@@ -276,6 +249,33 @@ public class StoreScreen extends JFrame {
 
 	}
 
+	JPanel createCenter(List<Media> itemList) {
+		JPanel center = new JPanel();
+
+		int itemsToShow = itemList.size() < 9 ? itemList.size() : 9;
+
+		if (itemsToShow == 0) {
+			center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
+
+			JLabel lblStoreEmpty = new JLabel("No item found.");
+			lblStoreEmpty.setAlignmentX(CENTER_ALIGNMENT);
+			lblStoreEmpty.setFont(new Font(lblStoreEmpty.getName(), Font.PLAIN, 20));
+
+			center.add(Box.createRigidArea(new Dimension(10, 200)));
+			center.add(lblStoreEmpty);
+			return center;
+		}
+
+		center.setLayout(new GridLayout(0, 3, 2, 2));
+
+		for (int i = 0; i < itemsToShow; i++) {
+			MediaStore cell = new MediaStore(itemList.get(i), this);
+			center.add(cell);
+		}
+
+		return center;
+	}
+
 	public void loadItemsToStore(List<Media> itemList) {
 		remove(center);
 		add(center = createCenter(itemList), BorderLayout.CENTER);
@@ -286,7 +286,7 @@ public class StoreScreen extends JFrame {
 	public void loadItemsToStore() {
 		loadItemsToStore(store.getItemsInStore());
 	}
-	
+
 	private class MenuListener implements ActionListener {
 
 		@Override
